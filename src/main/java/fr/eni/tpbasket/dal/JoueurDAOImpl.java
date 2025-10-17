@@ -65,7 +65,7 @@ public class JoueurDAOImpl implements JoueurDAO {
 
     @Override
     public Joueur addJoueur(JoueurDTO joueurDto){
-        String query = "INSERT INTO joueurs VALUES (:nom, :prenom, :email, :noEquipe)";
+        String query = "INSERT INTO joueurs(nom, prenom, email, noEquipe) VALUES (:nom, :prenom, :email, :noEquipe)";
 
         Joueur newJoueur;
         KeyHolder keyHolder = new GeneratedKeyHolder();
