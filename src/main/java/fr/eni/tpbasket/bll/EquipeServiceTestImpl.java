@@ -1,14 +1,12 @@
 package fr.eni.tpbasket.bll;
 
 import fr.eni.tpbasket.bo.Equipe;
-import org.springframework.stereotype.Service;
+import fr.eni.tpbasket.dto.EquipeDTO;
+import org.springframework.beans.BeanUtils;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
-@Service
+//@Service
 public class EquipeServiceTestImpl implements EquipeService {
 
     private Set<Equipe> equipes;
@@ -27,5 +25,23 @@ public class EquipeServiceTestImpl implements EquipeService {
     @Override
     public List<Equipe> getEquipes() {
         return equipes.stream().toList();
+    }
+
+    @Override
+    public Equipe addEquipe(EquipeDTO equipeDto) {
+        Equipe newEquipe = new Equipe();
+        BeanUtils.copyProperties(equipeDto, newEquipe);
+        equipes.add(newEquipe);
+        return newEquipe;
+    }
+
+    @Override
+    public Optional<Equipe> findEquipeByNom(String nom) {
+         return equipes.stream().filter(equipe -> equipe.getNom().equals(nom)).findFirst();
+    }
+
+    @Override
+    public void deleteEquipe(Integer noEquipe) {
+
     }
 }

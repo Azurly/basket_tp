@@ -1,11 +1,25 @@
 package fr.eni.tpbasket.bo;
 
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.NotNull;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
+
 import java.util.Objects;
 
+@Component
 public class Equipe {
+
+    @NotNull
     private int noEquipe;
+
+    @NotNull
+    @Max(30)
     private String nom;
 
+    public Equipe(){
+
+    }
     public Equipe(int noEquipe, String nom) {
         this.noEquipe = noEquipe;
         this.nom = nom;
